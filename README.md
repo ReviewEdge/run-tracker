@@ -1,2 +1,2 @@
-# spotify-controller
-An add on app to Spotify, to log songs, and add additional music control features.
+# run-tracker
+Allow you to track run mileage through email submissions.

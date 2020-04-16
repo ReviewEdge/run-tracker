@@ -1,21 +1,22 @@
 import config
-import sheets
+from spotify_controller_repo.sample import gsheets_tool
+from furtherpy.sample import date_conv_tool
 import datetime
-import date_convert
 
 
+# sets the run log sheet to be used
 current_sheet_id = config.run_log_google_sheet_id
 
 
 def log_run(service, run_dist):
     date = datetime.datetime.now().strftime("%D")
-    sheets.write_data_list_to_sheet(service, current_sheet_id, "A:C", [run_dist, date,
-                                                                       date_convert.get_readable_time()])
+    gsheets_tool.write_data_list_to_sheet(service, current_sheet_id, "A:C", [run_dist, date,
+                                                                             date_conv_tool.get_readable_time()])
 
 
 def main():
     # Google Sheets Authentication
-    service = sheets.authenticate_sheets_api()
+    service = gsheets_tool.authenticate_sheets_api()
 
     run_dist = 5
     log_run(service, run_dist)
